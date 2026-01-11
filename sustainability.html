@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainability -Gift Shaka Global Garri Concepts</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.jpg" type="image/jpg">
+    <meta property="og:image" content="harvest4.jpg">
+    <meta property="og:title" content="Sustainability - Gift Shaka Global Garri Concepts">
+    <meta property="og:description" content="Our commitment to sustainability and eco-friendly practices.">
+    <style>
+        .sustainability-hero {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.9), rgba(46, 204, 113, 0.9));
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .sustainability-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        .journey-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .journey-step {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .journey-step:hover {
+            transform: translateY(-5px);
+        }
+        .journey-step .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .impact-section {
+            background: linear-gradient(135deg, #f8fff8, #e8f5e9);
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin: 4rem 0;
+        }
+    </style>
+</head>
+<body class="sustainability">
+    <div class="floating-leaves">
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌿</div>
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌱</div>
+        <div class="leaf">🍃</div>
+    </div>
+    <header>
+        <h1>Gift Shaka Global Concepts</h1>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Product</a>
+                <a href="about.html">About Us</a>
+                <a href="location.html">Location</a>
+                <a href="contact.html">Contact</a>
+                <a href="activities.html">Daily Activities</a>
+                <a href="login.html">Login</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="sustainability-hero">
+            <h2>🌱 Our Commitment to Sustainability</h2>
+            <p>From Farm to Table: A Journey of Freshness and Responsibility</p>
+        </section>
+        <section class="journey-section">
+            <div class="journey-step">
+                <div class="icon">🌾</div>
+                <h3>1. Sustainable Farming</h3>
+                <p>Our produce begins on eco-friendly farms using organic methods, water conservation, and natural pest control. We partner with local farmers who prioritize soil health and biodiversity.</p>
+            </div>
+            <div class="journey-step">
+                <div class="icon">🚜</div>
+                <h3>2. Careful Harvesting</h3>
+                <p>Harvested at peak ripeness using gentle, low-impact techniques. We minimize waste by using every part of the plant and composting remains to enrich the soil.</p>
+            </div>
+            <div class="journey-step">
+                <div class="icon">📦</div>
+                <h3>3. Efficient Transportation</h3>
+                <p>Transported in temperature-controlled, fuel-efficient vehicles. We source locally when possible to reduce carbon footprint and support our community.</p>
+            </div>
+            <div class="journey-step">
+                <div class="icon">🏪</div>
+                <h3>4. Fresh to Your Table</h3>
+                <p>Displayed in our market with minimal packaging. We educate customers on storage to reduce food waste and promote healthy eating habits.</p>
+            </div>
+        </section>
+        <section class="impact-section">
+            <h2>Our Environmental Impact</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div>
+                    <h3>💧 Water Conservation</h3>
+                    <p>Our farming partners use 40% less water through drip irrigation and rainwater harvesting.</p>
+                </div>
+                <div>
+                    <h3>🌍 Carbon Footprint</h3>
+                    <p>Reduced by 30% through local sourcing and electric delivery vehicles.</p>
+                </div>
+                <div>
+                    <h3>🗂️ Waste Reduction</h3>
+                    <p>95% of our waste is composted or recycled, diverting from landfills.</p>
+                </div>
+                <div>
+                    <h3>🌱 Biodiversity</h3>
+                    <p>We support farms that maintain natural habitats for pollinators and wildlife.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Fresh Produce Market. All rights reserved.</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+            const hamburger = document.querySelector('.hamburger');
+            if (hamburger) hamburger.classList.toggle('active');
+        }
+    </script>
+    <p>&copy; Made and programmed by ROSEAN-X.</p>
+</body>
+</html>

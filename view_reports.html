@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Reports - Gift Shaka Global Garri Concepts</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.jpg" type="image/jpg">
+    <meta property="og:image" content="harvest4.jpg">
+    <meta property="og:title" content="View Reports - Gift Shaka Global Garri Concepts">
+    <meta property="og:description" content="View sales and inventory reports.">
+    <style>
+        .reports-dashboard {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .reports-header {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .report-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        .report-filters select, .report-filters button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+        }
+        .report-section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .report-section h3 {
+            color: #27ae60;
+            margin-bottom: 1rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .total-row {
+            font-weight: bold;
+            background-color: #e8f5e8;
+        }
+    </style>
+</head>
+<body class="view-reports">
+    <div class="floating-leaves">
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌿</div>
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌱</div>
+        <div class="leaf">🍃</div>
+    </div>
+    <header>
+        <h1>Fresh Produce Market - Gift Shaka Global Garri Concepts</h1>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Product </a>
+                <a href="about.html">About Us</a>
+                <a href="location.html">Location</a>
+                <a href="contact.html">Contact</a>
+                <a href="activities.html">Daily Activities</a>
+                <a href="admin.html">Admin Dashboard</a>
+            </div>
+        </nav>
+    </header>
+    <main class="reports-dashboard">
+        <div class="reports-header">
+            <h2>📊 Sales Reports</h2>
+            <p>View sales data for different time periods</p>
+        </div>
+        <div class="report-filters">
+            <select id="period-select">
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
+            </select>
+            <button onclick="generateReport()">Generate Report</button>
+        </div>
+        <section class="report-section">
+            <h3>Sales Summary</h3>
+            <table id="sales-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity Sold</th>
+                        <th>Revenue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+                <tfoot>
+                    <tr class="total-row">
+                        <td>Total</td>
+                        <td id="total-qty">0</td>
+                        <td id="total-rev">$0.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+        <section class="report-section">
+            <h3>Top Selling Items</h3>
+            <canvas id="sales-chart" width="400" height="200"></canvas>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Fresh Produce Market. All rights reserved.</p>
+    </footer>
+    <script>
+        function generateReport() {
+            const period = document.getElementById('period-select').value;
+            const now = new Date();
+            const startDate = period === 'week' ? new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000) : new Date(now.getFullYear(), now.getMonth(), 1);
+            
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            const periodOrders = orders.filter(order => new Date(order.date) >= startDate);
+            
+            const salesData = {};
+            let totalQty = 0;
+            let totalRev = 0;
+            
+            periodOrders.forEach(order => {
+                order.items.forEach(item => {
+                    if (!salesData[item.name]) {
+                        salesData[item.name] = { qty: 0, rev: 0 };
+                    }
+                    salesData[item.name].qty += item.quantity;
+                    salesData[item.name].rev += item.total;
+                    totalQty += item.quantity;
+                    totalRev += item.total;
+                });
+            });
+            
+            const tbody = document.querySelector('#sales-table tbody');
+            tbody.innerHTML = '';
+            
+            Object.entries(salesData).forEach(([item, stats]) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item}</td>
+                    <td>${stats.qty}</td>
+                    <td>$${stats.rev.toFixed(2)}</td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            document.getElementById('total-qty').textContent = totalQty;
+            document.getElementById('total-rev').textContent = `$${totalRev.toFixed(2)}`;
+            
+            // Simple chart
+            drawChart(salesData);
+        }
+
+        function drawChart(data) {
+            const canvas = document.getElementById('sales-chart');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const items = Object.keys(data);
+            const maxQty = Math.max(...Object.values(data).map(d => d.qty)) || 1;
+            
+            items.forEach((item, index) => {
+                const qty = data[item].qty;
+                const barHeight = (qty / maxQty) * 150;
+                ctx.fillStyle = '#27ae60';
+                ctx.fillRect(50 + index * 60, 180 - barHeight, 40, barHeight);
+                ctx.fillStyle = '#000';
+                ctx.fillText(item.substring(0, 6), 50 + index * 60, 195);
+                ctx.fillText(qty, 50 + index * 60 + 10, 170 - barHeight);
+            });
+        }
+
+        // Generate initial report
+        generateReport();
+
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+            const hamburger = document.querySelector('.hamburger');
+            if (hamburger) hamburger.classList.toggle('active');
+        }
+    </script>
+    <p>&copy; Made and programmed by ROSEAN-X.</p>
+</body>
+</html>

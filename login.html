@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Gift Shaka Global Garri Concepts</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.jpg" type="image/jpg">
+    <meta property="og:image" content="harvest4.jpg">
+    <meta property="og:title" content="Login - Gift Shaka Global Garri Concepts">
+    <meta property="og:description" content="Admin login for Gift Shaka Global Garri Concepts.">
+</head>
+<body class="login">
+    <div class="floating-leaves">
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌿</div>
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌱</div>
+        <div class="leaf">🍃</div>
+    </div>
+    <header>
+       <h1>Gift Shaka Global Concepts</h1>
+        <h1>Garri Factory</h1>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Product</a>
+                <a href="about.html">About Us</a>
+                <a href="location.html">Location</a>
+                <a href="contact.html">Contact</a>
+                <a href="activities.html">Daily Activities</a>
+                <a href="login.html">Login</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="login-container">
+            <div class="login-header">
+                <h2>🌱 Admin Login</h2>
+                <p>Login to access the admin dashboard</p>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">📧 Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">🔒 Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+                
+                <button type="submit" class="login-btn">🚀 Login</button>
+            </form>
+            <div class="login-footer">
+                <p>Forgot your password? <a href="#">Reset here</a></p>
+            </div>
+        </div>
+    </main>
+   
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDp84hJoV8XMHBFuVOu_EkOVGI_XJEXzVk",
+    authDomain: "gift-shaka-official.firebaseapp.com",
+    projectId: "gift-shaka-official",
+    storageBucket: "gift-shaka-official.firebasestorage.app",
+    messagingSenderId: "50535634548",
+    appId: "1:50535634548:web:4a9c18d15a4cc28cc0e321",
+    measurementId: "G-7QVDE7RQ9F"
+  };
+        
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  
+  // Set persistence
+  setPersistence(auth, browserLocalPersistence);
+
+  // Login form submit logic
+  document.getElementById('login-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      console.log("Success:", userCredential.user);
+      alert('WELCOME BACK BOSS. LOGIN SUCCESSFUL!');
+      window.location.href = 'admin.html'; 
+    } catch (error) {
+      console.error("Login Error:", error.code);
+      if (error.code === 'auth/invalid-credential') {
+        alert('Error: Wrong Email or Password.');
+      } else {
+        alert('Login failed: ' + error.message);
+      }
+    }
+  });
+
+  // Hamburger menu logic
+  window.toggleMenu = function() {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('active');
+    const hamburger = document.querySelector('.hamburger');
+    if (hamburger) hamburger.classList.toggle('active');
+  };
+  
+  document.querySelector('.hamburger').addEventListener('click', window.toggleMenu);
+</script>
+    <footer style="text-align:center; margin-top: 40px; padding: 20px; opacity: 0.7;">
+        <p style="font-size: 12px; color: #fff;">
+        &copy; 2026 Gift Shaka Global Garri Concepts. <br>
+        <span style="letter-spacing: 1px;">ENGINEERED BY</span>
+        <a href="alvinkill.github.io" style="color:#27a860; text-decoration:none; font-weight:bold">&copy; Made and programmed by ROSEAN-X.</a></p>
+    </footer>
+</body>
+</html>

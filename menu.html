@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu - Gift Shaka Global Garri Concepts</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.jpg" type="image/jpg">
+    <meta property="og:image" content="harvest4.jpg">
+    <meta property="og:title" content="Main Menu - Gift Shaka Global Garri Concepts">
+    <meta property="og:description" content="Explore our products and menu.">
+<style>
+  
+</style>
+</head>
+<body class="menu">
+    <div class="floating-leaves">
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌿</div>
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌱</div>
+        <div class="leaf">🍃</div>
+    </div>
+    <header>
+        <h1>Gift Shaka Global Concepts</h1>
+          <h1>Garri Factory</h1>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Product</a>
+                <a href="about.html">About Us</a>
+                <a href="location.html">Location</a>
+                <a href="contact.html">Contact</a>
+                <a href="activities.html">Daily Activities</a>
+                <a href="login.html">Login</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <h2>TYPE OF PRODUCT AVAILABLE</h2>
+        <div class="produce-grid">
+        </div>
+        <div class="variety-statement">
+            <p>Discover our exquisite variety of unique produce, each item hand-selected for its exceptional quality and distinctive flavor. From traditional favorites to rare finds, we bring you the finest selection that celebrates diversity and excellence in every bite world wide.</p>
+        </div>
+    </main>
+    <script>
+        // Products
+        const products = [
+            { name: 'white garri', description: 'Plainly fried cassava, without palm oil.',  img: 'wgarri.jpg' },
+            { name: 'Yellow garri', description: 'White garri with added palm oil, giving it color, flavor, and antioxidants.', price: 0.59, img: 'ygarri.jpg' },
+            { name: 'Ijebu Garri', description: 'A type of white garri with a distinct, sharper taste.',  img: 'igarri.jpg' },
+            { name: 'Ghana Garri', description: 'Sweeter and finer vs. coarser and sourer varieties.', price: 3.99, img: 'ggarri.jpg' },
+            { name: 'Sunshine Cassava', description: 'Popular for fufu and gari..', price: 3.99, img: 'casa.jpg' },
+            { name: 'Hope & Baba-70 Cassava', description: 'Great for gari and fufu production, benefiting local processors.', price: 3.99, img: 'casa2.jpg' },
+            { name: 'Sweet Cassava', description: 'suitable for boiling and eating with minimal processing.', price: 3.99, img: 'casa3.jpg' },
+            { name: 'Bitter Cassava', description: 'this is for industrial uses like flour and starch due to high dry matte', price: 3.99, img: 'casa4.jpg' },     
+        ]
+
+        // Render products
+        const grid = document.querySelector('.produce-grid');
+        products.forEach(product => {
+            const item = document.createElement('div');
+            item.className = 'produce-item';
+            item.innerHTML = `
+                <img src="${product.img}" alt="${product.name}">
+                <h3>${product.name}</h3>
+                <p>${product.description}</p>
+               
+            `;
+            grid.appendChild(item);
+        });
+
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+            const hamburger = document.querySelector('.hamburger');
+            if (hamburger) hamburger.classList.toggle('active');
+        }
+    </script>
+     <footer style="text-align:center; margin-top: 40px; padding: 20px; opacity: 0.7;">
+        <p style="font-size: 12px; color: #fff;">
+        &copy; 2026 Gift Shaka Global Garri Concepts. <br>
+        <span style="letter-spacing: 1px;">ENGINEERED BY</span>
+        <a href="alvinkill.github.io" style="color:#27a860; text-decoration:none; font-weight:bold">&copy; Made and programmed by ROSEAN-X.</a></p>
+    </footer>
+</body>
+</html>

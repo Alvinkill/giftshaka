@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location - Gift Shaka Global Garri Concepts</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.jpg" type="image/jpg">
+    <meta property="og:image" content="harvest4.jpg">
+    <meta property="og:title" content="Location - Gift Shaka Global Garri Concepts">
+    <meta property="og:description" content="Find our location and visit us.">
+    <style>
+        .location-hero {
+            animation: fadeIn 1s ease-out;
+        }
+        .location-hero h2 {
+            animation: slideInUp 1.2s ease-out;
+        }
+        .location-hero p {
+            animation: slideInUp 1.4s ease-out;
+        }
+        .detail-card {
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+        .detail-card:nth-child(1) { animation-delay: 0.1s; }
+        .detail-card:nth-child(2) { animation-delay: 0.2s; }
+        .detail-card:nth-child(3) { animation-delay: 0.3s; }
+        .detail-card:nth-child(4) { animation-delay: 0.4s; }
+        .location-gallery h3 {
+            animation: fadeIn 1s ease-out;
+        }
+        .gallery-image {
+            animation: zoomIn 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        .gallery-image:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-image:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-image:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-image:nth-child(4) { animation-delay: 0.4s; }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+<body class="location">
+    <div class="floating-leaves">
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌿</div>
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌱</div>
+        <div class="leaf">🍃</div>
+    </div>
+    <header>
+        <h1>Gift Shaka Global Concepts</h1>
+        <h1>Garri Factory</h1>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Product</a>
+                <a href="about.html">About Us</a>
+                <a href="location.html">Location</a>
+                <a href="contact.html">Contact</a>
+                <a href="activities.html">Daily Activities</a>
+                <a href="login.html">Login</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="location-hero">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Scenic farm location" class="hero-image">
+            <h2>Find Us</h2>
+            <p>Located in the heart of nature, our farm stand offers a peaceful shopping experience surrounded by beautiful landscapes.</p>
+        </section>
+        <section class="location-content">
+            <div class="location-details">
+                <div class="detail-card">
+                    <h3>📍 Address</h3>
+                    <p>Off Alhaji Ola Hassan Street Oko-Afo, Badagry local Government Area<br> Lagos State<br>Nigeria</p>
+                    <a href="https://www.google.com/maps/@6.4922915,3.0270493,3a,90y,237.9h,82.65t/data=!3m4!1e1!3m2!1sQ2FRa8C48VBsOKajTHXeEg!2e0?utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MTIwOF8wIJvbDyoASAJQAQ%3D%3D" class="map" >click to view on map</a>
+                </div>
+                <div class="detail-card">
+                    <h3>🕒 Hours of Operation</h3>
+                    <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                </div>
+                <div class="detail-card">
+                    <h3>🚗 Directions</h3>
+                    <p>coming from mile 2 to Badagry, make a stop at okafor bus stop at the right side, then make a straight down, then you will arrive at Alhaji Hassan street at the left side, <Oka-Afo></Oka-Afo><p>
+                    <p>Parking available on-site. Wheelchair accessible entrance.</p>
+                </div>
+                <div class="detail-card">
+                    <h3>🌳 What to Expect</h3>
+                    <p>Visit our charming farm stand featuring fresh, locally-grown produce. Enjoy the scenic views while selecting the best seasonal fruits and vegetables. We also offer farm tours and educational programs about sustainable farming.</p>
+                </div>
+            </div>
+        </section>
+        <section class="location-gallery">
+            <h3>Explore Our Surroundings</h3>
+            <div class="gallery-grid">
+                <img src="fac.png" alt="Farm entrance" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Produce stand" class="gallery-image">
+                <img src="fac1.jpg" alt="Scenic view" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Fresh produce display" class="gallery-image">
+            </div>
+        </section>
+    </main>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+            const hamburger = document.querySelector('.hamburger');
+            if (hamburger) hamburger.classList.toggle('active');
+        }
+    </script>
+    <footer>
+       <footer style="text-align:center; margin-top: 40px; padding: 20px; opacity: 0.7;">
+        <p style="font-size: 12px; color: #fff;">
+        &copy; 2026 Gift Shaka Global Garri Concepts. <br>
+        <span style="letter-spacing: 1px;">ENGINEERED BY</span>
+        <a href="alvinkill.github.io" style="color:#27a860; text-decoration:none; font-weight:bold">&copy; Made and programmed by ROSEAN-X.</a></p>
+    </footer>
+</body>
+</html>
